@@ -1,12 +1,22 @@
-export default class SelectedItems {
-    constructor() {
-        this.selectedItems = [];
-    }
+import React from "react";
 
-    handleSelectionFinish = selectedItems => {
-        this.selectedItems = selectedItems;
+const selectedItemsService = {};
+const selectedItems = [];
 
-        // eslint-disable-next-line no-console
-        console.log(`Finished selection ${selectedItems.length}`)
+
+const handleSelection = value => () => {
+    const currentIndex = selectedItems.indexOf(value);
+
+    if (currentIndex === -1) {
+        selectedItems.push(value);
+    } else {
+        selectedItems.splice(currentIndex, 1);
     }
-}
+};
+
+
+selectedItemsService.selectedItems=selectedItems;
+selectedItemsService.handleSelection = handleSelection;
+
+export default selectedItemsService;
+

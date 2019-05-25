@@ -1,14 +1,14 @@
-import React, {Component, Fragment, createRef} from "react";
+import React, {Component, Fragment} from "react";
 import {withStyles} from "@material-ui/core";
 import PropTypes from "prop-types";
 import {SelectableGroup} from 'react-selectable-fast'
-import SelectedItems from "./selectedItems";
 import ListOfApples from "./ListOfApples";
+import ThreeDimScatterChart from "./chart";
 
 
 const styles = theme => ({
     root: {
-        display: 'flex',
+        display_position: 'flex',
     },
 });
 
@@ -16,42 +16,41 @@ const styles = theme => ({
 class ApplesComponent extends Component {
     constructor(props) {
         super(props);
-
-        this.selectedItems = new SelectedItems()
+        this.state={selectedItems:[]}
     }
-
-    handleSelectionFinish = selectedItems => {
-        this.selectedItems.handleSelectionFinish(selectedItems)
-    };
 
     handleSelectionClear() {
         console.log('Cancel selection');
     }
 
+
+
     render() {
         const {classes, items} = this.props;
+        let selectedItems=[];
+        const selectedItemsCollback = (newSelectedItems)=>{
+            this.setState((prevState)=>({selectedItems:[...newSelectedItems]}));
+        };
+
         return (
             <Fragment>
                 apples component
 
                 <SelectableGroup
-                    ref={ref => (window.selectableGroup = ref)}
-                    className="main"
-                    clickClassName="tick"
-                    enableDeselect
-                    tolerance={0}
-                    deselectOnEsc={false}
-                    allowClickWithoutSelected={false}
-                    onSelectionClear={this.handleSelectionClear}
-                    onSelectionFinish={this.handleSelectionFinish}
-                    ignoreList={['.not-selectable']}>
-                    <ListOfApples items={items}/>
+                ref={ref => (window.selectableGroup = ref)}
+                className="main"
+                clickClassName="tick"
+                enableDeselect
+                tolerance={0}
+                deselectOnEsc={false}
+                allowClickWithoutSelected={false}
+                onSelectionClear={this.handleSelectionClear}
+                // onSelectionFinish={this.handleSelectionFinish}
+                ignoreList={['.not-selectable']}>
+                <ListOfApples items={items} selectedItemsCollback={selectedItemsCollback}/>
                 </SelectableGroup>
 
-
-                {/*{(items || []).map(item => (*/}
-                    {/*<li key={item._id}>{item._id}</li>*/}
-                {/*))}*/}
+                <ThreeDimScatterChart data={this.state.selectedItems}/>
             </Fragment>
         );
     }
