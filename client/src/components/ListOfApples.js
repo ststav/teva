@@ -7,6 +7,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
+
 const styles = theme => ({
     root: {
         display: 'inline-grid',
@@ -45,32 +46,22 @@ function ListOfApples(props) {
             <p>Press ESC to clear selection</p>
             <div>
                 <SelectAll component="button" type="button" className="selectable-button">
-                Select all
+                    Select all
                 </SelectAll>
                 <DeselectAll component="button" type="button" className="selectable-button">
-                Clear selection
+                    Clear selection
                 </DeselectAll>
             </div>
 
 
-            <List className={classes.root}>
+            <div className={classes.ListOfApples}>
                 {props.items.map(value => (
-                    <ListItem key={value._id} role={undefined} dense button onClick={handleToggle(value)}>
-                        <ListItemIcon>
-                            <Checkbox
-                                edge="start"
-                                checked={checked.includes(value)}
-                                tabIndex={-1}
-                                disableRipple
-                            />
-                        </ListItemIcon>
-                        <ListItemText primary={`name: ${value.AppleNum}`}/>
 
-                        <SelectableApple key={value._id} item={value}/>
+                    <SelectableApple key={value._id} item={value}/>
 
-                    </ListItem>
+
                 ))}
-            </List>
+            </div>
 
         </div>
     )
