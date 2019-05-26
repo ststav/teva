@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import fetch from '../assets/data/applesData';
+import fetchQuery from '../services/serverApi';
 import ApplesComponent from './applesComponent';
 
 const styles = theme => ({
@@ -25,7 +25,7 @@ class ApplesPage extends Component {
     }
 
     onLoadData() {
-        const apples = fetch();
+        const apples = fetchQuery();
         apples.then(data =>
             this.setState((prevState, props) => ({applesCollection: data}))
         );
