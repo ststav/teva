@@ -1,4 +1,4 @@
-# express-es6-starter
+# express-es6-mongoDB
 
 Starter project for creating a MVC express server, using
 
@@ -21,5 +21,5 @@ npm install
 ```
 npm start
 ```
-
+Runs the app in the development mode.<br>
 The server will run on port 9000. You can change this by editing `config.dev.js` file.
