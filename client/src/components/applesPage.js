@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import fetchQuery from '../services/serverApi';
 import ApplesComponent from './applesComponent';
+import AppBar from "@material-ui/core/AppBar";
 
 const styles = theme => ({
     root: {
@@ -35,6 +36,7 @@ class ApplesPage extends Component {
         const {classes} = this.props;
         return (
             <Fragment>
+                <AppBar style={{textAlign:'center'}} position="static">TEvEL - Apples Chart</AppBar>
                 <ApplesComponent items={this.state.applesCollection}></ApplesComponent>
 
             </Fragment>

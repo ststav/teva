@@ -43,8 +43,6 @@ class ApplesComponent extends Component {
 
         return (
             <Fragment>
-                apples component
-
                 <SelectableGroup
                     ref={ref => (window.selectableGroup = ref)}
                     className="main"
