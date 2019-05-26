@@ -16,6 +16,9 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'space - between',
         flexWrap: 'wrap',
+        height: '500px',
+        width: '100%',
+        overflow: 'auto',
     }
 });
 

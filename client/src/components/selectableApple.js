@@ -5,29 +5,30 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-    },
-    icon: {},
-    item: {
-        display: 'table',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        cursor: 'pointer',
-        margin: '7px',
-        alignSelf: 'center',
-
-    },
-    selected: {
-        background: 'lightgray',
-        color: 'white',
-        borderRadius: '20px'
-
-    },
-    selecting: {
-        border: '1px solid rebeccapurple',
-    }
-});
+        root: {
+            display: 'flex',
+            borderRadius: '50%',
+            alignSelf: 'center',
+        },
+        item: {
+            cursor: 'pointer',
+            background: 'lightgray',
+            margin: '7px',
+            borderRadius: '50%',
+            width: '60px',
+            height: '60px',
+            display: 'inline-block',
+            textAlign: 'center',
+        },
+        selected: {
+            background: 'lightgreen',
+            color: 'white',
+        },
+        selecting: {
+            border: '1px solid rebeccapurple',
+        }
+    })
+;
 
 
 function AppleIcon(props) {
@@ -45,6 +46,7 @@ const SelectableApple = (props) => {
     return <div ref={selectableRef}
                 className={`${classes.item} ${selecting && classes.selecting} ${selected && classes.selected}`}>
         <AppleIcon className={classes.icon} nativeColor={props.item.Color} style={{fontSize: props.item.Size * 3}}/>
+        <div>{props.item.AppleNum}</div>
     </div>
 };
 
